@@ -1,27 +1,35 @@
-// SIGNUP FUNCTIONALITES
-let signup = document.getElementById("signup");
-let login = document.getElementById("login");
+let fullName = document.getElementById("name");
+let email = document.getElementById("email");
+let password = document.getElementById("password");
+let signupBtn = document.getElementById("signup");
 
-signup.addEventListener("click", function signup() {
-  let fullName = document.getElementById("name").value;
-  let email = document.getElementById("email").value;
-  let password = document.getElementById("password").value;
-
-  if (!fullName || !email || !password) {
+signupBtn.addEventListener("click", function () {
+  if (!fullName.value || !email.value || !password.value) {
     return alert("Please fill all the fields!");
   }
 
-  if (password.length < 8) {
-    return alert("Password should be atleast 8 digits long!");
+  if (password.value.length < 8) {
+    return alert("Password must be at least 8 characters!");
   }
 
-  let signupDetails = {
-    fullName: fullName,
-    email: email,
-    password: password,
+  // Get old users or empty array
+  let usersDetails = JSON.parse(localStorage.getItem("signupUsers")) || [];
+
+  // Check if email already exists
+  let exists = usersDetails.find((user) => user.email === email.value);
+  if (exists) {
+    return alert("Email already registered!");
+  }
+
+  // New user object
+  let newUser = {
+    fullName: fullName.value,
+    email: email.value,
+    password: password.value,
   };
 
-  localStorage.setItem("signupUser", JSON.stringify(signupDetails));
+  usersDetails.push(newUser);
+  localStorage.setItem("signupUsers", JSON.stringify(usersDetails));
 
   alert("Signup successful!");
   window.location = "login.html";
