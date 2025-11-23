@@ -33,7 +33,7 @@ loginBtn.addEventListener("click", function () {
     localStorage.setItem("loggedinUser", JSON.stringify(loggedinUser));
 
     alert("Congratulations, we are signing you up!");
-    window.location = "profile.html";
+    window.location = "index.html";
   } else {
     alert("Incorrect Password");
   }

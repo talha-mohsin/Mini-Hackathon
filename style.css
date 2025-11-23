@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background-color: rgb(234, 234, 234);
+}
+.parent {
+  display: flex;
+}
+.profileDetails {
+  height: 100vh;
+  width: 25vw;
+  background-color: #e2c6c6;
+}
+.coverImg {
+  height: 28vh;
+  width: 100%;
+  position: relative;
+}
+.coverImg img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.profileImg {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid rgb(0, 55, 255);
+  position: absolute;
+  bottom: -30px;
+  left: 30px;
+}
+.profileImg img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.container {
+  height: 100vh;
+  width: 50vw;
+  background-color: white;
+  margin: auto;
+}
+.postsInput {
+  height: 28vh;
+  background-color: #dcdbdb;
+}
