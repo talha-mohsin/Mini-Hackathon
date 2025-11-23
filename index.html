@@ -10,18 +10,44 @@
     <div class="parent">
       <div class="profileDetails">
         <div class="coverImg">
-          <img src="https://png.pngtree.com/thumb_back/fh260/background/20240610/pngtree-computer-of-a-programmer-with-lines-code-of-software-image_15746003.jpg" alt="">
+          <img
+            src="https://png.pngtree.com/thumb_back/fh260/background/20240610/pngtree-computer-of-a-programmer-with-lines-code-of-software-image_15746003.jpg"
+            alt=""
+          />
           <div class="profileImg">
-            <img src="https://portraitpal.ai/wp-content/uploads/2024/10/Linkedin-headshot.jpg" alt="">
+            <img
+              src="https://portraitpal.ai/wp-content/uploads/2024/10/Linkedin-headshot.jpg"
+              alt=""
+            />
           </div>
         </div>
       </div>
 
       <div class="container">
         <div class="postsInput">
-          <input type="text">
+          <div class="descriptionInput">
+            <b id="descriptionLabel">Post Description</b>
+            <input
+              id="postDescription"
+              type="text"
+              placeholder="write your post description"
+            />
+            </div>
+            <div class="descriptionInput">
+            <b id="descriptionLabel">Image Url</b>
+
+            <input
+              id="postUrl"
+              type="text"
+              placeholder="enter your post image url"
+            />
+          </div>
+          <button id="post">Post</button>
         </div>
-        <div class="posts"></div>
+        <div class="posts">
+          <div class="description"></div>
+          <div class="Image"></div>
+        </div>
       </div>
       <div class="profileDetails"></div>
     </div>
