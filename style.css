@@ -84,10 +84,9 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  background-color: #fff;
+  background-color: white;
   border-top: 1px solid gray;
-  margin: 30px 0;
+  margin: 10px 0;
   border-radius: 10px;
 }
 .postdescriptionOptions {
@@ -104,7 +103,7 @@ body {
   width: auto;
   box-shadow: 0 0 5px black;
   border-radius: 5px;
-  padding: 10px;
+  padding: 25px 10px 10px 10px;
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -112,6 +111,11 @@ body {
   position: absolute;
   right: 10px;
   display: none;
+}
+#postOptClose {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 .postOptions button {
   background-color: transparent;
@@ -121,13 +125,18 @@ body {
 }
 .postOptions button:hover {
   color: rgb(2, 52, 178);
+}
+button:hover, i:hover {
   cursor: pointer;
 }
 .postImage {
   width: 100%;
-  height: auto;
+  height: 250px;
 }
 .postImage img {
   width: 100%;
-  /* height: auto; */
+  height: 100%;
+  object-fit: cover;
+  border-bottom-left-radius: 10px;  
+  border-bottom-right-radius: 10px;  
 }
