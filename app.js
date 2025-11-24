@@ -1,18 +1,40 @@
-// function profile() {
-//   let userDetails = JSON.parse(localStorage.getItem("signupUsers")) || [];
-//   let loggedinUser = JSON.parse(localStorage.getItem("loggedinUser")) || [];
+let userPostDescription = document.querySelector("#userPostDescription");
+let userPostUrl = document.querySelector("#userPostUrl");
 
-//   if (!loggedinUser) {
-//     return (window.location = "login.html");
-//   }
-// }
-// profile();
+let postsData = JSON.parse(localStorage.getItem("userPosts")) || [];
 
-let postDescription = document.querySelector('#postDescription');
-let postUrl = document.querySelector('#postUrl');
+let postsUI = postsData.map((postData) => {
+  let post = `<div class="post">
+                <div class="postdescriptionOptions">
+                  <p class="postdescription">${postData.postDescription}</p> 
+                  <i class="fa-solid fa-ellipsis"></i>
+                  <p class="postOptions">
+                    <button>Edit Post</button>
+                    <button>Delete Post</button>
+                  </p> 
+                </div>
+                  <div class="postImage">
+                    <img src="${postData.postUrl}" >
+                  </div>
+              </div>`;
+  return post;
+});
 
-document.querySelector('.post').addEventListener('click', function () {
-  // postDescription.value 
-  // postUrl.value 
-})
-let posts = document.querySelector('.posts');
+document.querySelector(".posts").innerHTML += postsUI.join("");
+
+document.querySelector("#postBtn").addEventListener("click", function () {
+  let postsData = JSON.parse(localStorage.getItem("userPosts")) || [];
+
+  let postDetails = {
+    postDescription: userPostDescription.value,
+    postUrl: userPostUrl.value,
+  };
+
+  postsData.push(postDetails);
+
+  localStorage.setItem("userPosts", JSON.stringify(postsData));
+});
+
+function deletePost() {
+
+}
