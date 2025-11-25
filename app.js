@@ -1,34 +1,39 @@
 let userPostDescription = document.querySelector("#userPostDescription");
 let userPostUrl = document.querySelector("#userPostUrl");
 
-function frontUI() {
-  let postsData = JSON.parse(localStorage.getItem("userPosts")) || [];
+let postsData = JSON.parse(localStorage.getItem("userPosts")) || [];
 
-  let postsUI = postsData.map((postData) => {
+function browserUi() {
+  document.querySelector(".posts").innerHTML = '';
+  let postsUI = postsData.map((postData, idx) => {
     let post = `<div class="post">
                 <div class="postdescriptionOptions">
                   <p class="postdescription">${postData.postDescription}</p> 
                   <i onclick="options(this)" class="fa-solid fa-ellipsis"></i>
                   <p class="postOptions">
-                    <i onclick="postOptClose(this)" id="postOptClose" class="fa-regular fa-circle-xmark"></i>
-                    <button>Edit Post</button>
-                    <button onclick="deletePost()">Delete Post</button>
-                  </p> 
-                </div>
-                  <div class="postImage">
-                    <img src="${postData.postUrl}">
-                  </div>
-              </div>`;
+                  <i onclick="postOptClose(this)" id="postOptClose" class="fa-regular fa-circle-xmark"></i>
+                  <button>Edit Post</button>
+                    <button onclick="deleteHandler(${idx})">Delete Post</button>
+                    </p>
+                    </div>
+                    <div class="postImage">
+                    <img id="postImg" src="${postData.postUrl}">
+                    </div>
+                    </div>`;
     return post;
   });
 
   document.querySelector(".posts").innerHTML += postsUI.join("");
+};
+browserUi();
+
+function deleteHandler(postIdx) {
+  postsData.splice(postIdx, 1);
+  localStorage.setItem("userPosts", JSON.stringify(postsData));
+  browserUi();
 }
-frontUI();
 
 document.querySelector("#postBtn").addEventListener("click", function () {
-
-  let postsData = JSON.parse(localStorage.getItem("userPosts")) || [];
 
   let postDetails = {
     postDescription: userPostDescription.value,
@@ -38,6 +43,10 @@ document.querySelector("#postBtn").addEventListener("click", function () {
   postsData.unshift(postDetails);
 
   localStorage.setItem("userPosts", JSON.stringify(postsData));
+  browserUi();
+
+  userPostDescription.value = ``;
+  userPostUrl.value = ``;
 });
 
 function options(e) {
@@ -47,16 +56,3 @@ function options(e) {
 function postOptClose(e) {
   e.parentElement.style.display = "none";
 }
-
-
-
-
-
-
-function deletePost() {
-  console.log('delete btn is clicked!')
-}
-
-
-// First Challenge -->> New Post is showing after page refreshing even post btn is clicked
-// Second Challenge -->> Post options are not showing when I click on 3 dots.
